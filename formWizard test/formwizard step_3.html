@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>formwizard_step3_3</title>
+    <style>
+        #container {
+            text-align: center;
+        }
+
+        #container h1 {
+            border: 2px solid gray;
+            background-color: gray;
+            color: white;
+            border-radius: 10px;
+        }
+
+        .layer {
+            position: absolute;
+            right: 17px;
+            top: 108px;
+            width: 98%;
+            height: 2px;
+            background-color: blue;
+            z-index: -1;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        li i:hover {
+            border: 2px solid blue;
+            background-color: blue;
+        }
+
+        li i {
+            border: 2px solid gray;
+            border-radius: 50%;
+            padding: 15px;
+            background-color: gray;
+            color: white;
+        }
+
+        #pages a {
+            color: gray;
+            text-decoration: none;
+        }
+
+        .mandatory {
+            color: red;
+        }
+
+        #Inputed h2 {
+            margin: 57px auto;
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        #step1 h2 {
+            margin-top: 30px;
+            border: 2px solid gray;
+            background-color: gray;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        #step2 h2 {
+            margin-top: 30px;
+            border: 2px solid gray;
+            background-color: gray;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        #back {
+            position: absolute;
+            bottom: 20px;
+            right: 90%;
+            border: 2px solid blue;
+            padding: 5px;
+            border-radius: 2px;
+            background-color: blue;
+            color: white;
+            text-decoration: none;
+        }
+
+        #result{
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        #submit {
+            position: absolute;
+            bottom: 20px;
+            margin-left: 93%;
+            border: 2px solid blue;
+            padding: 5px;
+            border-radius: 2px;
+            background-color: blue;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+<body>
+<div id="container">
+    <h1>Step 3 of 4</h1>
+    <div id="pages">
+        <ul>
+            <div class="layer">
+                <div class="layer" style="width: 0%;"></div>
+            </div>
+            <li><a href="formwizard step_1.html"><i style="background-color: blue;border: 2px solid blue;" class="fa-solid fa-house-chimney"></i><br>Property Info</a></li>
+            <li><a href="formwizard step_2.html"><i style="background-color: blue;border: 2px solid blue;" class="fa-solid fa-broom"></i><br>Required Cleaning</a></li>
+            <li><a href=""><i class="fa-solid fa-circle-check"></i></i><br>Confirm</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="Inputed">
+    <h2>Your Inputed Data Summery:</h2>
+</div>
+<div id="result">
+    <div id="step1">
+        <h2>Step One</h2>
+        <div>
+            <p><b>Selected Property Type:  </b>
+                <span id="selectedPropertyType"></span></p>
+        </div>
+        <div>
+            <p><b>Selected Cleaning Type:  </b>
+                <span id="selectedCleaningType"></span></h3>
+        </div>
+        <div>
+            <p><b>Selected Address:  </b>
+                <span id="selectedAddress"></span></p>
+        </div><br><br>
+    </div>
+    
+    <div id="step2">
+        <h2>Step Two</h2>
+        <div>
+            <p><b>Selected Property Size:  </b>
+                <span id="selectedPropertySize"></span></p>
+        </div>
+        <div>
+            <p><b>Selected Bedrooms:  </b>
+                <span id="selectedBedrooms"></span></h3>
+        </div>
+        <div>
+            <p><b>Selected Bathrooms Type:  </b>
+                <span id="selectedBathrooms"></span></p>
+        </div>
+        <div>
+            <p><b>Selected Bath Tubs:  </b>
+                <span id="selectedBathTubs"></span></h3>
+        </div>
+        <div>
+            <p><b>Selected Kitchen Items:  </b>
+                <span id="selectedKitchenItems"></span></p>
+        </div><br><br>
+    </div>
+</div>
+
+
+
+<div>
+    <a id="back" href="formwizard step_2.html"><i class="fa-solid fa-arrow-left"></i>Back</a>
+    <a id="submit" href="formwizard step_4.html" onclick="performNextAction()">Submit<i class="fa-solid fa-arrow-right"></i></a>
+</div>
+
+<script>
+
+    var selectedPropertyType = localStorage.getItem('selectedPropertyType');
+    var selectedCleaningType = localStorage.getItem('selectedCleaningType');
+    var selectedAddress = localStorage.getItem('selectedAddress');
+
+
+
+    // Display the retrieved values for Step 1
+    document.getElementById('selectedPropertyType').textContent = selectedPropertyType;
+    document.getElementById('selectedCleaningType').textContent = selectedCleaningType;
+    document.getElementById('selectedAddress').textContent = selectedAddress;
+
+
+    // Retrieve the stored values from localStorage for Step 2
+    var selectedPropertySize = localStorage.getItem('selectedPropertySize');
+    var selectedBedrooms = localStorage.getItem('selectedBedrooms');
+    var selectedBathrooms = localStorage.getItem('selectedBathrooms');
+    var selectedBathTubs = localStorage.getItem('selectedBathTubs');
+    var selectedKitchenItems = localStorage.getItem('selectedKitchenItems');
+
+    // Display the retrieved values for Step 2
+    document.getElementById('selectedPropertySize').textContent = selectedPropertySize;
+    document.getElementById('selectedBedrooms').textContent = selectedBedrooms;
+    document.getElementById('selectedBathrooms').textContent = selectedBathrooms;
+    document.getElementById('selectedBathTubs').textContent = selectedBathTubs;
+    document.getElementById('selectedKitchenItems').textContent = selectedKitchenItems;
+
+        
+
+    
+</script>
+
+</body>
+</html>
